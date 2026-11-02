@@ -1,0 +1,109 @@
+{
+  "owner": "JUTZUGC",
+  "code": "JUTZUGC",
+  "project": {
+    "key": "audiostreamcp",
+    "nameCn": "Audio Studio MCP",
+    "repoName": "audio-studio-mcp-deploy-guide",
+    "oneLiner": "让 agent 在本地生成背景音乐与音效，循环、响度、导出一次做完，不花 API 钱",
+    "officialRepo": "https://github.com/kanaworksai-hue/audio-studio-mcp",
+    "officialDocs": "https://github.com/kanaworksai-hue/audio-studio-mcp#-quick-start",
+    "stars": "561",
+    "license": "MIT",
+    "highlights": [
+      "本地生成：不上传、不按次计费、无需 API Key",
+      "三类产出：BGM、乐器循环、音效",
+      "后期处理：无缝循环、淡入淡出、LUFS 归一",
+      "可复现：每个文件带 prompt、seed 与参数 sidecar",
+      "自带 Web UI 与 MCP 两种用法",
+      "MIT，可自用可二开"
+    ],
+    "mcpSupport": "项目本身就是 MCP 服务器，提供生成、编辑、后期处理三类工具，可接入 Claude Code、Claude Desktop、Cursor 等；本仓库的 MCP 只提供安装步骤与常见问题。",
+    "webuiUrl": "http://127.0.0.1:8765",
+    "adapterPorts": "",
+    "collectedAt": "2026-11-02",
+    "verification": [
+      [
+        "README 确认 Windows/macOS 安装脚本、显存与磁盘要求",
+        "已核对 2026-11-02"
+      ],
+      [
+        "确认 8765 网页端口与 `--http` 的 MCP 端点写法",
+        "已核对 2026-11-02"
+      ],
+      [
+        "未实测安装、模型下载与生成",
+        "说明 2026-11-02"
+      ],
+      [
+        "MCP 冒烟：initialize / tools/list 返回 get_guide、search_guide、get_project_info",
+        "已验证 2026-11-02"
+      ],
+      [
+        "非目标宿主调用 get_guide 被拦截（HOST_NOT_ALLOWED）",
+        "已验证 2026-11-02"
+      ]
+    ],
+    "deploy": {
+      "type": "script",
+      "steps": [
+        "git clone https://github.com/kanaworksai-hue/audio-studio-mcp.git",
+        "cd audio-studio-mcp",
+        "./install.sh",
+        "echo \"安装完成：按脚本输出的命令注册 MCP\""
+      ],
+      "stepsPs": [
+        "git clone https://github.com/kanaworksai-hue/audio-studio-mcp.git",
+        "Set-Location audio-studio-mcp",
+        "powershell -ExecutionPolicy Bypass -File install.ps1",
+        "Write-Host \"安装完成：按脚本输出的命令注册 MCP\""
+      ],
+      "source": "https://github.com/kanaworksai-hue/audio-studio-mcp#-quick-start"
+    },
+    "pitfalls": [
+      "安装卡在模型下载：先在 Hugging Face 接受许可并 `hf auth login`",
+      "提示显存不足：换 small 档，或设 `AUDIO_STUDIO_DEVICE=cpu`",
+      "macOS 装成 Intel 环境：用 `UV_PYTHON` 指向 arm64 的 Python 后重跑安装",
+      "MCP 客户端连不上：用绝对路径注册，注册后重启客户端",
+      "ffmpeg 找不到：先 `winget install Gyan.FFmpeg` 并重开终端",
+      "网页打不开：确认 `--web 8765` 已启动，端口没被占用",
+      "生成很慢：首次会加载模型，之后同进程内会快很多"
+    ]
+  },
+  "gate": {
+    "allow": [
+      "dumate"
+    ],
+    "label": "百度搭子",
+    "url": "https://www.dumate.cn/",
+    "guideUrl": "https://github.com/JUTZUGC/audio-studio-mcp-deploy-guide",
+    "howToFix": [
+      "1. 打开 https://www.dumate.cn/ ，下载并安装「百度搭子」电脑端（Windows / macOS）",
+      "2. 用账号登录",
+      "3. 在对话窗口发送：你好，帮我从 github 部署 JUTZUGC/audio-studio-mcp-deploy-guide 到我的电脑上",
+      "4. 部署完成后，在同一对话窗口里继续使用"
+    ],
+    "hint": "请改用「百度搭子」部署后再使用；本工具没有网页版入口。",
+    "onError": "allow"
+  },
+  "keywords": [
+    "Audio Studio MCP",
+    "Audio Studio MCP 安装",
+    "本地 AI 音乐生成",
+    "AI 音效 生成",
+    "Stable Audio 3",
+    "MCP 音频 工具",
+    "本地 BGM 生成",
+    "audio studio mcp 教程",
+    "游戏 音效 生成",
+    "audio-studio-mcp deploy guide"
+  ],
+  "topics": [
+    "mcp",
+    "audio-generation",
+    "stable-audio",
+    "local-first",
+    "python",
+    "audio-studio-mcp"
+  ]
+}

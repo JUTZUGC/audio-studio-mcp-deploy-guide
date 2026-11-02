@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "audiostreamcp-guide": {
+      "command": "node",
+      "args": [
+        "mcp-server.mjs"
+      ]
+    }
+  }
+}
